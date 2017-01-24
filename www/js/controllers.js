@@ -125,6 +125,8 @@ $scope.uniqueKeyNum = function(classNum){
       var x = ((y * (MintY - BlueberryY)) - T) / (BlueberryX - MintX);
       console.log("S " + S);
       console.log("T " + T);
+      console.log("X " + x);
+      console.log("Y " + y);
       $scope.x_coor = x; //x-coordinate 
       $scope.y_coor = y; //y-coordinate 
       return x.toFixed(2);
