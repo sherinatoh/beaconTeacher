@@ -59,6 +59,17 @@ $scope.getTimeStudent = function(number) {
 
 
 })
+.controller('ClassListCtrl', function($scope, $firebaseAuth, $firebaseObject, $firebase) {
+    var fb = new Firebase("https://beaconfunction.firebaseio.com/ClassList");
+    //var fbClass = fb.child("1010");
+    $scope.registerStudent = function(matric,classTime, classCode) {
+     fbClass = fb.child(matric); 
+      fbClass.set({
+        matricNumber: matric, 
+        classTime: classCode
+      }) 
+    }
+})
 .controller('ClassCodeCtrl', function($scope, $firebase, $firebaseObject){
  var fbServer = new Firebase("https://beaconfunction.firebaseio.com/Classes");
  /*$scope.list = function() {
@@ -87,13 +98,20 @@ $scope.uniqueKeyNum = function(classNum){
         var xCoor = getCoordinatesX(mintDist, iceDist, blueberryDist, classNum);
         console.log("XCoor is " + xCoor);
         var yCoor = getCoordinatesY(mintDist, iceDist, blueberryDist, classNum);
+<<<<<<< HEAD
         console.log("YCoor is " + yCoor);
         //if(((xCoor<= $scope.Height || xCoor <= $scope.Width)&& xCoor>=0) && ((yCoor<= $scope.Height || yCoor <= $scope.Width)&& yCoor >=0))
+=======
+        console.log("xCoor: "+ xCoor);
+        console.log("yCoor: " + yCoor); 
+        if(((xCoor<= $scope.Height || xCoor <= $scope.Width) && xCoor>=0) && ((yCoor<= $scope.Height || yCoor <= $scope.Width) && yCoor >=0)){
+>>>>>>> upstream/master
         var student = {id: $scope.id, xCoordinate: xCoor, yCoordinate: yCoor}
         //var student = [$scope.id, xCoor, yCoor];
         console.log(student.id)
         $scope.studentList.push(student);
         console.log($scope.studentList);
+        }
         })
       })
    }
@@ -103,9 +121,14 @@ $scope.uniqueKeyNum = function(classNum){
     var room = roomNum.child(classNum);
     room.on("value", function(snapshot) {
       $scope.Height = snapshot.child("Height").child("height").val(); 
+<<<<<<< HEAD
       $scope.Width = snapshot.child("BlueberryMint").child('distance').val();
       console.log("H " + $scope.Height);
       console.log("W " + $scope.Width)
+=======
+      $scope.Width = snapshot.child("BlueberryMint").child("distance").val();
+      //console.log($scope.Height);
+>>>>>>> upstream/master
       var MintX = 0; //xa
       console.log("MintX " + MintX);
       var MintY = 0; //ya
@@ -123,6 +146,7 @@ $scope.uniqueKeyNum = function(classNum){
       var T = (Math.pow(MintX, 2.) - Math.pow(BlueberryX, 2.) + Math.pow(MintY, 2.) - Math.pow(BlueberryY, 2.) + Math.pow(iceDistance, 2.) - Math.pow(mintDistance, 2.)) / 2.0;
       var y = ((T * (BlueberryX - IceX)) - (S * (BlueberryX - MintX))) / (((MintY - BlueberryY) * (BlueberryX - IceX)) - ((IceY - BlueberryY) * (BlueberryX - MintX)));
       var x = ((y * (MintY - BlueberryY)) - T) / (BlueberryX - MintX);
+<<<<<<< HEAD
       console.log("S " + S);
       console.log("T " + T);
       console.log("X " + x);
@@ -130,6 +154,12 @@ $scope.uniqueKeyNum = function(classNum){
       $scope.x_coor = x; //x-coordinate 
       $scope.y_coor = y; //y-coordinate 
       return x.toFixed(2);
+=======
+      console.log("x: " + x);
+      //var x_coor = x; //x-coordinate 
+      //var y_coor = y; //y-coordinate 
+      return x;
+>>>>>>> upstream/master
     })
   
   }
@@ -150,9 +180,15 @@ $scope.uniqueKeyNum = function(classNum){
       var T = (Math.pow(MintX, 2.) - Math.pow(BlueberryX, 2.) + Math.pow(MintY, 2.) - Math.pow(BlueberryY, 2.) + Math.pow(iceDistance, 2.) - Math.pow(mintDistance, 2.)) / 2.0;
       var y = ((T * (BlueberryX - IceX)) - (S * (BlueberryX - MintX))) / (((MintY - BlueberryY) * (BlueberryX - IceX)) - ((IceY - BlueberryY) * (BlueberryX - MintX)));
       var x = ((y * (MintY - BlueberryY)) - T) / (BlueberryX - MintX);
+<<<<<<< HEAD
       $scope.x_coor = x; //x-coordinate 
       $scope.y_coor = y; //y-coordinate 
       return y.toFixed(2);
+=======
+     //var x_coor = x; //x-coordinate 
+      //var y_coor = y; //y-coordinate 
+       return y;
+>>>>>>> upstream/master
     })
   
   }

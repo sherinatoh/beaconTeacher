@@ -68,6 +68,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordovaBeacon', 'f
       }
     }
   })
+  .state('app.classList', {
+    url: '/classList',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/classList.html',
+        controller: 'ClassListCtrl'
+      }
+    }
+  })
   .state('app.roomMap', {
     url: '/roomMap',
     views: {
@@ -78,5 +87,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordovaBeacon', 'f
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/classCode');
+  $urlRouterProvider.otherwise('/app/studentList');
 });
